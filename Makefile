@@ -18,6 +18,9 @@ python-2.7.2-macosx10.6.dmg:
 	curl -LO https://www.python.org/ftp/python/2.7.2/python-2.7.2-macosx10.6.dmg
 	@echo "$(__BLUE)Ready to any test.$(__END)"
 
+clean:
+	@rm -f python-2.7.2-macosx10.6.dmg speed-go speed-c
+
 test-python: python-2.7.2-macosx10.6.dmg
 	time python2 ./speed.py
 
@@ -30,5 +33,8 @@ speed-go: python-2.7.2-macosx10.6.dmg
 test-go: speed-go
 	time ./speed-go python-2.7.2-macosx10.6.dmg
 
-clean:
-	@rm -f python-2.7.2-macosx10.6.dmg speed-go
+speed-c: python-2.7.2-macosx10.6.dmg
+	${CC} -Ofast -arch x86_64 -o speed-c speed.c
+
+test-c: speed-c
+	time ./speed-c python-2.7.2-macosx10.6.dmg
