@@ -19,10 +19,10 @@ python-2.7.2-macosx10.6.dmg:
 	@echo "$(__BLUE)Ready to any test.$(__END)"
 
 test-python: python-2.7.2-macosx10.6.dmg
-	time python2 ./speed-python.py python-2.7.2-macosx10.6.dmg
+	time python2 ./speed.py
 
 test-python3: python-2.7.2-macosx10.6.dmg
-	time python3 ./speed-python.py python-2.7.2-macosx10.6.dmg
+	time python3 ./speed.py3
 
 speed-go: python-2.7.2-macosx10.6.dmg
 	go build -o speed-go ./speed.go
